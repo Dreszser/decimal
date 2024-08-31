@@ -10,8 +10,7 @@ The binary representation of a Decimal value consists of a 1-bit sign, a 96-bit 
 
 ## Build
 
-- To build a static s21_decimal.a library use Makefile target ``` make all ``` or simply ``` make ```;
-- To use implemented functions you can create ``` main.c ``` file and run ``` make test ``` target;
-- You can also run ``` make gcov_report ``` to get html coverage report and run tests, but you will need check and gcovr installed;
-- (Alternative)Run dockerfile using ``` run.sh ``` script in the "Docker" directiry ``` sudo bash run.sh ```,
-  it will create coverage report without the need to install all the libraries yourself;
+- To build a static s21_decimal.a library use Makefile target ``` make all ``` or simply ``` make ```
+- To use implemented functions you can create ``` main.c ``` file and run ``` make test ``` target
+- You can also run ``` make gcov_report ``` to get html coverage report and run tests, but you will need check and gcovr installed
+- (Alternative)Run dockerfile using ``` run.sh ``` script in the "Docker" directory ``` sudo bash run.sh ```, it will create coverage report without the need to install all the libraries yourself
