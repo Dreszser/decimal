@@ -1,0 +1,136 @@
+#suite s21_convert_int_test
+
+#test s21_convert_int_test1
+int initial_integer = INT_MAX;
+s21_decimal decimal = {0};
+int true_res = 0;
+int result;
+int s21_res = s21_from_int_to_decimal(initial_integer, &decimal);
+ck_assert_int_eq(s21_res, true_res);
+s21_res = s21_from_decimal_to_int(decimal, &result);
+ck_assert_int_eq(s21_res, true_res);
+ck_assert_int_eq(initial_integer, result);
+
+#test s21_convert_int_test2
+int initial_integer = INT_MIN;
+s21_decimal decimal = {0};
+int true_res = 0;
+int result;
+int s21_res = s21_from_int_to_decimal(initial_integer, &decimal);
+ck_assert_int_eq(s21_res, true_res);
+s21_res = s21_from_decimal_to_int(decimal, &result);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_convert_int_test3
+s21_decimal dec;
+int value = -1234567;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test s21_convert_int_test4
+s21_decimal dec;
+int value = 1234567;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test s21_convert_int_test5
+s21_decimal dec;
+int value = 1234.567;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test s21_convert_int_test6
+s21_decimal dec;
+int value = -1234.567;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test s21_convert_int_test7
+s21_decimal dec;
+int value = -1234567;
+set_exp(&dec, 10);
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test s21_convert_int_test8
+int value = 7922;
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0xffffffff, 0x00000000}};
+set_exp(&dec, 25);
+int dst;
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test s21_convert_int_test9
+s21_decimal dec;
+int value = 0;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test s21_convert_int_test10
+s21_decimal dec;
+int value = -0;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test s21_convert_int_test11
+s21_decimal dec;
+int value = INT32_MIN;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+set_sign(&dec, 0);
+ck_assert_int_eq(1, s21_from_decimal_to_int(dec, &dst));
+
+#test s21_convert_int_test12
+s21_decimal dec;
+int value = 1e-06;
+int dst;
+s21_from_int_to_decimal(value, &dec);
+s21_from_decimal_to_int(dec, &dst);
+ck_assert_int_eq(value, dst);
+
+#test s21_convert_int_test13
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0xffffffff, 0x00000000}};
+int dst;
+ck_assert_int_eq(1, s21_from_decimal_to_int(dec, &dst));
+
+#test s21_convert_int_test14
+s21_decimal dec = {{0xffffffff, 0x00000000, 0xffffffff, 0x00000000}};
+int dst;
+ck_assert_int_eq(1, s21_from_decimal_to_int(dec, &dst));
+
+#test s21_convert_int_test15
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0x00000000, 0x00000000}};
+int dst;
+ck_assert_int_eq(1, s21_from_decimal_to_int(dec, &dst));
+
+#test s21_convert_int_test16
+s21_decimal dec = {{0xffffffff, 0x00000000, 0x00000000, 0x00000000}};
+set_sign(&dec, 1);
+int dst;
+ck_assert_int_eq(1, s21_from_decimal_to_int(dec, &dst));
+
+#test s21_convert_int_test17
+s21_decimal dec = {{0xffffffff, 0xffffffff, 0xffffffff, 0x00000000}};
+int *value = NULL;
+ck_assert_ptr_eq(value, NULL);
+ck_assert_int_eq(s21_from_decimal_to_int(dec, value), 1);
+
+#test s21_convert_int_test18
+s21_decimal *dec = NULL;
+int value = 10;
+int true_res = 1;
+ck_assert_int_eq(s21_from_int_to_decimal(value, dec), true_res);

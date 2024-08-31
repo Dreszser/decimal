@@ -1,0 +1,98 @@
+#suite s21_truncate_test
+
+#test s21_truncate_test1
+int true_res = 0;
+s21_decimal val1 = {{0x6DB68C9A, 0x3B16ECA7, 0xD2B06542, 0x80050000}};
+s21_decimal result = {{0x787100B6, 0xC19529EB, 0x00008A13, 0x80000000}};
+s21_decimal output;
+int s21_res = s21_truncate(val1, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_truncate_test2
+int true_res = 0;
+s21_decimal val1 = {{0x7528E6E2, 0x4FC46D55, 0x8C766F5C, 0x00000000}};
+s21_decimal result = {{0x7528E6E2, 0x4FC46D55, 0x8C766F5C, 0x00000000}};
+s21_decimal output = {{0x00000000, 0x00000000, 0x00000000, 0x00000000}};
+int s21_res = s21_truncate(val1, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_truncate_test3
+int true_res = 0;
+s21_decimal val1 = {{0xFCAFDF4E, 0xF83D08B2, 0x0F5FD3D9, 0x00030000}};
+s21_decimal result = {{0xD1A922C8, 0x64DB3270, 0x0003EF92, 0x00000000}};
+s21_decimal output = {{0x00000000, 0x00000000, 0x00000000, 0x00000000}};
+int s21_res = s21_truncate(val1, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_truncate_test4
+int true_res = 0;
+s21_decimal val1 = {{0x4AA8B746, 0x16B2CE20, 0x3279AAD9, 0x00020000}};
+s21_decimal result = {{0x901B4983, 0xEE4E968A, 0x00813777, 0x00000000}};
+s21_decimal output = {{0x00000000, 0x00000000, 0x00000000, 0x00000000}};
+int s21_res = s21_truncate(val1, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_truncate_test5
+int true_res = 0;
+s21_decimal val1 = {{0xEF08BE16, 0xAA6A51F3, 0xA16998A0, 0x00000000}};
+s21_decimal result = {{0xEF08BE16, 0xAA6A51F3, 0xA16998A0, 0x00000000}};
+s21_decimal output = {{0x00000000, 0x00000000, 0x00000000, 0x00000000}};
+int s21_res = s21_truncate(val1, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_truncate_test6
+int true_res = 0;
+s21_decimal val1 = {{0xFB1A0842, 0xAF1ABA89, 0x1DED808A, 0x000E0000}};
+s21_decimal result = {{0x36179169, 0x0000543D, 0x00000000, 0x00000000}};
+s21_decimal output = {{0x00000000, 0x00000000, 0x00000000, 0x00000000}};
+int s21_res = s21_truncate(val1, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_truncate_test7
+int true_res = 0;
+s21_decimal val1 = {{0xC1695042, 0x01D7BD8F, 0xBAF7DDE9, 0x80180000}};
+s21_decimal result = {{0x0000E207, 0x00000000, 0x00000000, 0x80000000}};
+s21_decimal output = {{0x00000000, 0x00000000, 0x00000000, 0x00000000}};
+int s21_res = s21_truncate(val1, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_truncate_test8
+int true_res = 0;
+s21_decimal val1 = {{0xC1C882AC, 0x629AE407, 0x098E4EB5, 0x00130000}};
+s21_decimal result = {{0x11A0A408, 0x00000000, 0x00000000, 0x00000000}};
+s21_decimal output = {{0x00000000, 0x00000000, 0x00000000, 0x00000000}};
+int s21_res = s21_truncate(val1, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_truncate_test9
+int true_res = 0;
+s21_decimal val1 = {{0x411612DE, 0x196E3A3D, 0x27ACEA87, 0x00060000}};
+s21_decimal result = {{0x8FA77A3F, 0xA4C694A1, 0x00000299, 0x00000000}};
+s21_decimal output = {{0x00000000, 0x00000000, 0x00000000, 0x00000000}};
+int s21_res = s21_truncate(val1, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_truncate_test10
+int true_res = 0;
+s21_decimal val1 = {{0x4CBA0E3F, 0x84F7B15F, 0x52847547, 0x800B0000}};
+s21_decimal result = {{0x94A8A83E, 0x038B49DF, 0x00000000, 0x80000000}};
+s21_decimal output = {{0x00000000, 0x00000000, 0x00000000, 0x00000000}};
+int s21_res = s21_truncate(val1, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_truncate_test11
+int true_res = 1;
+s21_decimal val1 = {{0x4CBA0E3F, 0x84F7B15F, 0x52847547, 0x800B0000}};
+s21_decimal *output = NULL;
+int s21_res = s21_truncate(val1, output);
+ck_assert_int_eq(s21_res, true_res);

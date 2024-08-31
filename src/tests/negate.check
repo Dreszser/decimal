@@ -1,0 +1,44 @@
+#suite s21_negate_test
+
+#test s21_negate_test1
+int true_res = 0;
+s21_decimal value = {{0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000000}};
+s21_decimal result = {{0xffffffff, 0xffffffff, 0xffffffff, 0x80000000}};
+s21_decimal output = {0};
+int s21_res = s21_negate(value, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_negate_test2
+int true_res = 0;
+s21_decimal value = {{0x0, 0x0, 0x0, 0x0}};
+s21_decimal result = {{0x0, 0x0, 0x0, 0x80000000}};
+s21_decimal output = {0};
+int s21_res = s21_negate(value, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_negate_test3
+int true_res = 0;
+s21_decimal value = {{0x0, 0x0, 0x0, 0x80000000}};
+s21_decimal result = {{0x0, 0x0, 0x0, 0x0}};
+s21_decimal output = {0};
+int s21_res = s21_negate(value, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_negate_test4
+int true_res = 0;
+s21_decimal value = {{0x63100009, 0x6bc75e2d, 0x5, 0x80140000}};
+s21_decimal result = {{0x63100009, 0x6bc75e2d, 0x5, 0x140000}};
+s21_decimal output = {0};
+int s21_res = s21_negate(value, &output);
+for (int i = 0; i < 4; i++) ck_assert_int_eq(result.bits[i], output.bits[i]);
+ck_assert_int_eq(s21_res, true_res);
+
+#test s21_negate_test5
+int true_res = 1;
+s21_decimal value = {{0xffffffff, 0xffffffff, 0xffffffff, 0x10000}};
+s21_decimal *output = NULL;
+int s21_res = s21_negate(value, output);
+ck_assert_int_eq(s21_res, true_res);

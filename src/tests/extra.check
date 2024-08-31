@@ -1,0 +1,11 @@
+#suite s21_extra_test
+
+#test s21_extra_test1
+s21_decimal test1 = {0};
+print_dec(test1);
+s21_big_decimal test2 = {{0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0}};
+print_big_dec(test2);
+
+int true_res = 0;
+int s21_res = is_big_zero(&test2);
+ck_assert_int_eq(true_res, s21_res);
